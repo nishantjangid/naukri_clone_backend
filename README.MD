@@ -20,12 +20,17 @@ Naukri clone is the dummy copy of naukri.com platform with some basic features.
 ## Installation
 
 
-```bash
+
 Install all module
-> npm i 
+```bash
+npm i 
+```
 Add db url in .env file DATABASE_URL
-> DATABASE_URL = postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME?schema=public
+```bash
+DATABASE_URL = postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME?schema=public
+```
 Run API on your port
-> npm run start:dev
+```bash
+npm run start:dev
 ```
     
