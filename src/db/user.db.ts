@@ -5,13 +5,13 @@ const createUser = async (data:CreateUser) => {
     try{
         return await prisma.user.create({
             data
-        })
+        });
     }catch(error){
         return error;
     }
-}
+};
 
 
 export default {
     createUser
-}
+};

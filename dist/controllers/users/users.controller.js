@@ -14,10 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const api_response_1 = __importDefault(require("../../helpers/api_response"));
 const users_service_1 = __importDefault(require("../../services/users/users.service"));
-const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let data = req.body;
         let response = yield users_service_1.default.createUser(data);
+        api_response_1.default.SUCCESS(res, "User created successfully", response);
     }
     catch (error) {
         api_response_1.default.ERROR(res, error);

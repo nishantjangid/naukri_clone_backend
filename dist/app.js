@@ -24,5 +24,5 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 // ROUTES
 app.use("/v1/api/users", routes_1.UserRoutes);
 app.listen(env_config_1.default.PORT, () => {
-    console.log(`Started on ${env_config_1.default.PORT}`);
+    // console.log(`Started on ${ENV_VARIABLES.PORT}`);
 });

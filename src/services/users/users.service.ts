@@ -7,8 +7,8 @@ const createUser = async (data:CreateUser) => {
     }catch(error){
         return error;
     }
-}
+};
 
 export default {
     createUser
-}
+};
