@@ -1,3 +1,5 @@
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'; 
+import PrismaError from './prisma_errors';
 import { Response } from 'express';
 
 export default {
@@ -8,24 +10,32 @@ export default {
             data,
         });
     },
-    ERROR(res: Response, message: any) {
+    ERROR(res: Response, error: any) {
+
+        if (error instanceof PrismaClientKnownRequestError) {
+            let message = PrismaError(error.code,error)
+            return res.status(500).json({            
+                error: message
+            });            
+        }
         return res.status(500).json({            
-            message
+            error:error.message
         });
+        
     },
     NOT_FOUND(res: Response, message: string) {
         return res.status(404).json({            
-            message
+            error:message
         });
     },
     FORBIDDEN(res: Response, message: string) {
         return res.status(403).json({            
-            message
+            error:message
         });
     },
     UNAUTHORIZED(res: Response, message: string) {
         return res.status(403).json({            
-            message
+            error:message
         });
     },
 

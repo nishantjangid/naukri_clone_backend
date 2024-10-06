@@ -4,6 +4,9 @@ import ENV_VARIABLES from "./config/env.config";
 
 const app = express();
 
+// MIDDLEWARES
+app.use(express.json());
+
 app.get("/",async (req:Request,res:Response) => {
     res.status(200).json({
         message:"Hello World!"

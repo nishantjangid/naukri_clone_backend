@@ -5,7 +5,7 @@ const createUser = async (data:CreateUser) => {
         let response = await UserDB.createUser(data);
         return response;
     }catch(error){
-        return error;
+        return {status:"error",error:error};        
     }
 };
 
