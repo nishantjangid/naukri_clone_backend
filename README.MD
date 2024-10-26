@@ -23,14 +23,41 @@ Naukri clone is the dummy copy of naukri.com platform with some basic features.
 
 Install all module
 ```bash
-npm i 
+  npm i 
 ```
 Add db url in .env file DATABASE_URL
 ```bash
-DATABASE_URL = postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME?schema=public
+  DATABASE_URL = postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME?schema=public
 ```
 Run API on your port
 ```bash
-npm run start:dev
+  npm run start:dev
 ```
+
+## PRISMA COMMANDS
+
+Start prisma studio
+
+```bash
+  npx prisma studio
+```
+
+Run existing migrations
+
+```bash
+  npx prisma migrate dev
+```
+
+Check migration all applied
+
+```bash
+  npx prisma migrate status
+```
+
+Create a migration file after schema changes
+```bash
+  npx prisma migrate dev --name init
+```
+
+
     

@@ -18,7 +18,12 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         let data = req.body;
         let response = yield users_service_1.default.createUser(data);
-        api_response_1.default.SUCCESS(res, "User created successfully", response);
+        if (response.status == "success") {
+            api_response_1.default.SUCCESS(res, "User created successfully", response);
+        }
+        else {
+            api_response_1.default.ERROR(res, response.error);
+        }
     }
     catch (error) {
         api_response_1.default.ERROR(res, error);

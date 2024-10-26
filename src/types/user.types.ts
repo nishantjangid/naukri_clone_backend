@@ -1,4 +1,5 @@
 export interface CreateUser {
     name?:string;
-    email:string;    
+    email:string;   
+    password:string; 
 }

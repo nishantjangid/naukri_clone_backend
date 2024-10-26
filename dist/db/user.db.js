@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_config_1 = __importDefault(require("../config/db.config"));
 const createUser = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return yield db_config_1.default.user.create({
+        let result = yield db_config_1.default.user.create({
             data
         });
+        return { status: "success", data: result };
     }
     catch (error) {
-        return error;
+        return { status: "error", error: error };
     }
 });
 exports.default = {

@@ -19,7 +19,7 @@ const createUser = (data) => __awaiter(void 0, void 0, void 0, function* () {
         return response;
     }
     catch (error) {
-        return error;
+        return { status: "error", error: error };
     }
 });
 exports.default = {

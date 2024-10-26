@@ -12,10 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.handler = void 0;
 const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes");
-const env_config_1 = __importDefault(require("./config/env.config"));
+const serverless_http_1 = __importDefault(require("serverless-http"));
 const app = (0, express_1.default)();
+// MIDDLEWARES
+app.use(express_1.default.json());
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).json({
         message: "Hello World!"
@@ -23,6 +26,7 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 }));
 // ROUTES
 app.use("/v1/api/users", routes_1.UserRoutes);
-app.listen(env_config_1.default.PORT, () => {
-    // console.log(`Started on ${ENV_VARIABLES.PORT}`);
-});
+// app.listen(ENV_VARIABLES.PORT,()=>{
+//     console.log(`Started on ${ENV_VARIABLES.PORT}`);
+// });
+exports.handler = (0, serverless_http_1.default)(app);

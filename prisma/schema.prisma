@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
@@ -15,10 +16,12 @@ datasource db {
 
 // MODELS
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  Post  Post[]
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String?
+  password String
+  role     Roles   @default(USER)
+  Post     Post[]
 }
 
 model Post {
@@ -29,3 +32,8 @@ model Post {
   user        User    @relation(fields: [userId], references: [id])
 }
 
+enum Roles {
+  ADMIN       @map("0")
+  SUPER_ADMIN @map("1")
+  USER      @map("2")
+}
