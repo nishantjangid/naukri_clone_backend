@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  provider      = "prisma-client-js"  
 }
 
 datasource db {
@@ -16,12 +15,14 @@ datasource db {
 
 // MODELS
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String?
-  password String
-  role     Roles   @default(USER)
-  Post     Post[]
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  name       String?
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  role       Roles    @default(USER)
+  Post       Post[]
 }
 
 model Post {
@@ -35,5 +36,5 @@ model Post {
 enum Roles {
   ADMIN       @map("0")
   SUPER_ADMIN @map("1")
-  USER      @map("2")
+  USER        @map("2")
 }
