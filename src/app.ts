@@ -17,8 +17,8 @@ app.get("/",async (req:Request,res:Response) => {
 // ROUTES
 app.use("/v1/api/users",UserRoutes);
 
-// app.listen(ENV_VARIABLES.PORT,()=>{
-//     console.log(`Started on ${ENV_VARIABLES.PORT}`);
-// });
+app.listen(ENV_VARIABLES.PORT,()=>{
+    console.log(`Started on ${ENV_VARIABLES.PORT}`);
+});
 
-export const handler = ServerlessHttp(app);
+// export const handler = ServerlessHttp(app);
